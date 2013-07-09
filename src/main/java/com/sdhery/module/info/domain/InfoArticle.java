@@ -1,7 +1,6 @@
 package com.sdhery.module.info.domain;
 
 import com.sdhery.module.core.domain.BaseEntity;
-
 import java.util.Date;
 
 /**

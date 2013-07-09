@@ -23,4 +23,8 @@ public class InfoArticleService extends BaseService<InfoArticle, Integer> implem
     protected EntityDao<InfoArticle, Integer> getEntityDao() {
         return infoArticleDao;
     }
+
+    public int addInfoArticle(InfoArticle infoArticle) {
+        return infoArticleDao.insert(infoArticle);
+    }
 }

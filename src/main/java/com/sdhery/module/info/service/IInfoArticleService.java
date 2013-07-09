@@ -11,4 +11,5 @@ import com.sdhery.module.info.domain.InfoArticle;
 * @Date:2013-07-09 10:41:16
 */
 public interface IInfoArticleService extends IBaseService<InfoArticle, Integer> {
+    int addInfoArticle(InfoArticle infoArticle);
 }

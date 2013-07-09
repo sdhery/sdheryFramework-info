@@ -19,7 +19,7 @@ public class InfoArticleController extends BaseController {
 
     @RequestMapping(value = "/addOk")
     String addOk(InfoArticle infoArticle){
-        ServiceManager.infoArticleService.insert(infoArticle);
+        ServiceManager.infoArticleService.addInfoArticle(infoArticle);
         return "";
     }
 }

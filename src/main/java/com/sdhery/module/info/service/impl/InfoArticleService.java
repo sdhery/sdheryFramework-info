@@ -7,6 +7,8 @@ import com.sdhery.module.info.dao.IInfoArticleDao;
 import com.sdhery.module.info.domain.InfoArticle;
 import com.sdhery.module.info.service.IInfoArticleService;
 
+import java.util.Date;
+
 /**
 * @Title:实现业务操作类
 * @Description: 信息
@@ -24,7 +26,9 @@ public class InfoArticleService extends BaseService<InfoArticle, Integer> implem
         return infoArticleDao;
     }
 
-    public int addInfoArticle(InfoArticle infoArticle) {
+    public int addInfoArticle(InfoArticle infoArticle) throws Exception {
+        infoArticle.setInfoArticleId(getIdGenerator().getId("inf_article"));
+        infoArticle.setCreateTime(new Date());
         return infoArticleDao.insert(infoArticle);
     }
 }

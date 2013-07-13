@@ -14,7 +14,7 @@ public class InfoArticle extends BaseEntity {
 
     Integer infoArticleId;//主键
     String title;//标题
-    java.lang.Object content;//内容
+    String content;//内容
     Date createTime;//创建时间
 
     public Integer getInfoArticleId() {
@@ -31,11 +31,11 @@ public class InfoArticle extends BaseEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-    public java.lang.Object getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(java.lang.Object content) {
+    public void setContent(String content) {
         this.content = content;
     }
     public Date getCreateTime() {

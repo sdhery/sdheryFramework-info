@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InfoArticleController extends BaseController {
 
     @RequestMapping(value = "/addOk")
-    String addOk(InfoArticle infoArticle){
+    String addOk(InfoArticle infoArticle) throws Exception {
         ServiceManager.infoArticleService.addInfoArticle(infoArticle);
-        return "";
+        return "redirect:/admin/info/list";
     }
 }

@@ -1,6 +1,7 @@
 package com.sdhery.module.info.service;
 
 
+import com.sdhery.module.core.commons.Condition;
 import com.sdhery.module.core.service.IBaseService;
 import com.sdhery.module.info.domain.InfoArticle;
 
@@ -14,4 +15,5 @@ import java.util.List;
 */
 public interface IInfoArticleService extends IBaseService<InfoArticle, Integer> {
     int addInfoArticle(InfoArticle infoArticle) throws Exception;
+    List<InfoArticle> search(Condition condition);
 }

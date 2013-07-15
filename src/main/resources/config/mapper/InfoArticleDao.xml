@@ -15,13 +15,57 @@
         insert into inf_article(INFO_ARTICLE_ID,TITLE,CONTENT,CREATE_TIME) values (#{infoArticleId},#{title},#{content},#{createTime})
     </insert>
 
-    <select id="getById" resultMap="BaseResultMap" resultType="java.lang.Integer">
-        SELECT <include refid="Base_Column_List" /> FROM inf_article where INFO_ARTICLE_ID = #{id}
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM inf_article where INFO_ARTICLE_ID = #{id}
     </select>
 
     <update id="update" parameterType="com.sdhery.module.info.domain.InfoArticle">
         UPDATE inf_article set TITLE=#{title},CONTENT=#{content},CREATE_TIME=#{createTime} where INFO_ARTICLE_ID=#{infoArticleId}
     </update>
 
-    <delete id="deleteById" parameterType="java.lang.Integer">DELETE FROM inf_article WHERE INFO_ARTICLE_ID = #{id}</delete>
+    <delete id="deleteById"
+            parameterType="java.lang.Integer">DELETE FROM inf_article WHERE INFO_ARTICLE_ID = #{id}</delete>
+
+    <select id="search" resultMap="BaseResultMap" parameterType="com.sdhery.module.core.commons.Condition">
+        SELECT
+        <if test="distinct">distinct</if>
+        <include refid="Base_Column_List"/>
+        FROM inf_article
+        <if test="_parameter != null">
+            <include refid="simpleConditionWhere"/>
+        </if>
+        <if test="orderByClause != null">order by ${orderByClause}</if>
+    </select>
+
+    <sql id="simpleConditionWhere">
+        <where>
+            <if test="valid">
+                <foreach collection="conditionItems" item="conditionItem" separator="or">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <choose>
+                            <when test="criterion.noValue">
+                                and ${conditionItem.condition}
+                            </when>
+                            <when test="criterion.singleValue">
+                                and ${conditionItem.condition} #{conditionItem.value}
+                            </when>
+                            <when test="criterion.betweenValue">
+                                and ${conditionItem.condition} #{conditionItem.value} and #{conditionItem.secondValue}
+                            </when>
+                            <when test="criterion.listValue">
+                                and ${conditionItem.condition}
+                                <foreach close=")" collection="conditionItem.value" item="listItem" open="("
+                                         separator=",">
+                                    #{listItem}
+                                </foreach>
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
 </mapper>

@@ -4,6 +4,7 @@ import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.info.domain.InfoArticle;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -20,6 +21,12 @@ public class InfoArticleController extends BaseController {
     @RequestMapping(value = "/addOk")
     String addOk(InfoArticle infoArticle) throws Exception {
         ServiceManager.infoArticleService.addInfoArticle(infoArticle);
+        return "redirect:/admin/info/list";
+    }
+
+    @RequestMapping(value = "/list")
+    String list(ModelMap modelMap) throws Exception {
+
         return "redirect:/admin/info/list";
     }
 }

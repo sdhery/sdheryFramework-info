@@ -1,11 +1,14 @@
 package com.sdhery.module.info.web.admin;
 
+import com.sdhery.module.core.commons.Condition;
 import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.info.domain.InfoArticle;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +29,9 @@ public class InfoArticleController extends BaseController {
 
     @RequestMapping(value = "/list")
     String list(ModelMap modelMap) throws Exception {
-
+        Condition condition = new Condition();
+        List<InfoArticle> list = ServiceManager.infoArticleService.search(condition);
+        modelMap.put("list",list);
         return "admin/info/list";
     }
 }

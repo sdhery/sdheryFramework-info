@@ -27,6 +27,6 @@ public class InfoArticleController extends BaseController {
     @RequestMapping(value = "/list")
     String list(ModelMap modelMap) throws Exception {
 
-        return "redirect:/admin/info/list";
+        return "admin/info/list";
     }
 }

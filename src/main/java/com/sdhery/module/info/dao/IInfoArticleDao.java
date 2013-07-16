@@ -13,5 +13,4 @@ import java.util.List;
 * @Date:2013-07-09 10:41:16
 */
 public interface IInfoArticleDao extends EntityDao<InfoArticle,Integer> {
-    List<InfoArticle> search(Condition condition);
 }

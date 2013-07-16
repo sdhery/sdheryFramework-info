@@ -15,5 +15,4 @@ import java.util.List;
 */
 public interface IInfoArticleService extends IBaseService<InfoArticle, Integer> {
     int addInfoArticle(InfoArticle infoArticle) throws Exception;
-    List<InfoArticle> search(Condition condition);
 }

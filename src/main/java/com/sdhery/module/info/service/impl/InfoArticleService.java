@@ -33,8 +33,4 @@ public class InfoArticleService extends BaseService<InfoArticle, Integer> implem
         infoArticle.setCreateTime(new Date());
         return infoArticleDao.insert(infoArticle);
     }
-
-    public List<InfoArticle> search(Condition condition) {
-        return infoArticleDao.search(condition);
-    }
 }

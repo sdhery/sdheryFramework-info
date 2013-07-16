@@ -14,7 +14,4 @@ import java.util.List;
 * @Date:2013-07-09 10:41:16
 */
 public class InfoArticleDao extends BaseMybatisDao<InfoArticle, Integer> implements IInfoArticleDao{
-    public List<InfoArticle> search(Condition condition) {
-        return getSqlSession().selectList(getClass().getName() + ".search",condition);
-    }
 }

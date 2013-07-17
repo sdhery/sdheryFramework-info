@@ -32,6 +32,6 @@ public class InfoArticleController extends BaseController {
         Condition condition = new Condition();
         List<InfoArticle> list = ServiceManager.infoArticleService.search(condition);
         modelMap.put("list",list);
-        return "admin/info/list";
+        return "admin/module/info/list";
     }
 }
